@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('input[type="checkbox"]').click(function(){
+          if (this.hasAttribute("checked")) {
+            $(this).removeAttr('checked');
+                        console.log("attr exists")
+                    } else {
+                        $(this).attr("checked", "checked");
+                    }
+        });
+    });
+
+    function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+ function myWeek(){
+var today = new Date();
+var yyyy = today.getFullYear();
+var firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+var pastDaysOfYear = (today - firstDayOfYear) / 86400000;
+var ww = Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+
+week = yyyy+'-W'+ww;
+console.log(ww)
+document.getElementById("week").setAttribute("min", week);
+ }
+</script>
+<head>
+  <title>Flexifarm</title>
+</head>
+  <body>
+    <main>
+      <form>
+          <h1>Moneyfarm attendance form</h1>
+        <div data-cy-label="form-component">
+          <label for="name">Name</label>
+          <input type="name" required name="name" id="name" data-cy-label="form-name" pattern="[A-Za-z]+"/>
+        </div>
+        <div data-cy-label="form-component">
+          <label for="email">Email</label>
+          <input type="email" required name="email" id="email" data-cy-label="form-email"/>
+        </div>
+        <div data-cy-label="form-component">
+          <label for="message">Notes</label>
+          <textarea id="message" name="message" required data-cy-label="form-notes"></textarea>
+        </div>
+        <div data-cy-label="form-component">
+            <br>
+            <label>How you will come to the office?</label>  
+            <select data-cy-label="form-transport">  
+                <option value = "Car">Car</option>  
+                <option value = "Walk">Walk</option>  
+                <option value = "Bike">Bike</option>  
+                <option value = "Boat">Boat</option>
+                <option value = "Underground" disabled>Underground</option>  
+            </select>  
+        </div>
+        <select2 data-cy-label="form-component">
+        <p>Which days you want to attend the office?</p>
+        <label class="container" data-cy-label="form-days">Monday
+            <input type="checkbox" id="myCheckBoxID" value="Monday" >
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="container">Tuesday
+            <input type="checkbox" id="myCheckBoxID" value="Tuesday">
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="container">Wednesday
+            <input type="checkbox" id="myCheckBoxID" value="Wednesday">
+            <span class="checkmark"></span>
+          </label>
+          
+          <label class="container">Thursday
+            <input type="checkbox" id="myCheckBoxID" value="Thursday">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="container">Friday
+            <input type="checkbox"  id="myCheckBoxID" value="Friday" >
+            <span class="checkmark"></span>
+          </label>
+        </select2>
+        <br>
+          <div data-cy-label="form-component">
+            <p>Select the week:</p>
+            <input type="week" id="week" name="week" data-cy-label="form-week" min="" onclick="myWeek()" required>
+        </div>
+        <div data-cy-label="form-component">
+        <p>What do you need to have on your desk?</p>
+                <div data-cy-label="form-gadget">
+                <input type="checkbox" id="keyboard" name="gadgets" value="HTML">
+                <label for="keyboard">Keyboard</label><br>
+                <input type="checkbox" id="monitor" name="gadgets" value="CSS">
+                <label for="monitor">Monitor</label><br>
+                <input type="checkbox" id="adapter" for="mytoggle" name="gadgets" value="JavaScript" onclick="myFunction()">
+                <label for="adapter" id="mytoggle">Adapter</label>
+                </div>
+        </div>
+        <div data-cy-label="form-component">
+            <br>
+            <div id="myDIV" style="display: none" data-cy-label="form-yearmodel">
+                <label for="quantity" type="range">What is the production year of your laptop?</label>
+                <input type="number" id="quantity" name="quantity" min="2014" max="2021" required>
+            </div>
+        </div>
+        <br>
+        <div>
+            <button type="submit">SEND</button>
+        </div>
+      </form>
+    </main>
+  </body>
+  <script src="form.js"></script>
+</html>
